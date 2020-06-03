@@ -196,7 +196,7 @@ void	zbx_db_save_trigger_changes(const zbx_vector_ptr_t *trigger_diff)
 			char	*error_esc;
 
 			error_esc = DBdyn_escape_field("triggers", "error", diff->error);
-			zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset, "%cerror='%s'", delim, error_esc);
+			zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset, "%c`error`='%s'", delim, error_esc);
 			zbx_free(error_esc);
 		}
 

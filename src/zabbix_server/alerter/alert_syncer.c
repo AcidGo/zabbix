@@ -175,7 +175,7 @@ static int	am_db_get_alerts(zbx_vector_ptr_t *alerts)
 		if (SUCCEED == DBis_null(row[7]))
 		{
 			zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset,
-					"update alerts set status=%d,retries=0,error='Related event was removed.';\n",
+					"update alerts set status=%d,retries=0,`error`='Related event was removed.';\n",
 					ALERT_STATUS_FAILED);
 			if (FAIL == (ret = DBexecute_overflowed_sql(&sql, &sql_alloc, &sql_offset)))
 				break;
@@ -631,11 +631,11 @@ static int	am_db_flush_results(zbx_am_db_t *amdb)
 				{
 					char	*error_esc;
 					error_esc = DBdyn_escape_field("alerts", "error", result->error);
-					zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset, ",error='%s'", error_esc);
+					zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset, ",`error`='%s'", error_esc);
 					zbx_free(error_esc);
 				}
 				else
-					zbx_strcpy_alloc(&sql, &sql_alloc, &sql_offset, ",error=''");
+					zbx_strcpy_alloc(&sql, &sql_alloc, &sql_offset, ",`error`=''");
 
 				zbx_snprintf_alloc(&sql, &sql_alloc, &sql_offset, " where alertid=" ZBX_FS_UI64 ";\n",
 						result->alertid);

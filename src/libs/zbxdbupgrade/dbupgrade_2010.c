@@ -1624,7 +1624,7 @@ static int	DBpatch_2010192(void)
 {
 	if (ZBX_DB_OK <= DBexecute(
 			"update triggers"
-			" set state=%d,value=%d,lastchange=0,error=''"
+			" set state=%d,value=%d,lastchange=0,`error`=''"
 			" where exists ("
 				"select null"
 				" from functions f,items i,hosts h"
@@ -1645,7 +1645,7 @@ static int	DBpatch_2010193(void)
 {
 	if (ZBX_DB_OK <= DBexecute(
 			"update items"
-			" set state=%d,error=''"
+			" set state=%d,`error`=''"
 			" where exists ("
 				"select null"
 				" from hosts h"

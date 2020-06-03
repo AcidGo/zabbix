@@ -156,7 +156,7 @@ static void	tm_expire_remote_command(zbx_uint64_t taskid)
 			ZBX_STR2UINT64(alertid, row[0]);
 
 			error = DBdyn_escape_string_len("Remote command has been expired.", ALERT_ERROR_LEN);
-			DBexecute("update alerts set error='%s',status=%d where alertid=" ZBX_FS_UI64,
+			DBexecute("update alerts set `error`='%s',status=%d where alertid=" ZBX_FS_UI64,
 					error, ALERT_STATUS_FAILED, alertid);
 			zbx_free(error);
 		}
@@ -219,7 +219,7 @@ static int	tm_process_remote_command_result(zbx_uint64_t taskid)
 			else
 			{
 				error = DBdyn_escape_string_len(row[1], ALERT_ERROR_LEN);
-				DBexecute("update alerts set error='%s',status=%d where alertid=" ZBX_FS_UI64,
+				DBexecute("update alerts set `error`='%s',status=%d where alertid=" ZBX_FS_UI64,
 						error, ALERT_STATUS_FAILED, alertid);
 				zbx_free(error);
 			}

@@ -704,7 +704,7 @@ int	zbx_dbsync_compare_hosts(zbx_dbsync_t *sync)
 				"errors_from,available,disable_until,snmp_errors_from,"
 				"snmp_available,snmp_disable_until,ipmi_errors_from,ipmi_available,"
 				"ipmi_disable_until,jmx_errors_from,jmx_available,jmx_disable_until,"
-				"status,name,lastaccess,error,snmp_error,ipmi_error,jmx_error,tls_connect,tls_accept"
+				"status,name,lastaccess,`error`,snmp_error,ipmi_error,jmx_error,tls_connect,tls_accept"
 				",tls_issuer,tls_subject,tls_psk_identity,tls_psk,proxy_address,auto_compress,"
 				"maintenanceid"
 			" from hosts"
@@ -725,7 +725,7 @@ int	zbx_dbsync_compare_hosts(zbx_dbsync_t *sync)
 				"errors_from,available,disable_until,snmp_errors_from,"
 				"snmp_available,snmp_disable_until,ipmi_errors_from,ipmi_available,"
 				"ipmi_disable_until,jmx_errors_from,jmx_available,jmx_disable_until,"
-				"status,name,lastaccess,error,snmp_error,ipmi_error,jmx_error,tls_connect,tls_accept,"
+				"status,name,lastaccess,`error`,snmp_error,ipmi_error,jmx_error,tls_connect,tls_accept,"
 				"proxy_address,auto_compress,maintenanceid"
 			" from hosts"
 			" where status in (%d,%d,%d,%d)"
@@ -1796,7 +1796,7 @@ int	zbx_dbsync_compare_items(zbx_dbsync_t *sync)
 				"i.trapper_hosts,i.logtimefmt,i.params,ir.state,i.authtype,i.username,i.password,"
 				"i.publickey,i.privatekey,i.flags,i.interfaceid,i.snmpv3_authprotocol,"
 				"i.snmpv3_privprotocol,i.snmpv3_contextname,ir.lastlogsize,ir.mtime,"
-				"i.history,i.trends,i.inventory_link,i.valuemapid,i.units,ir.error,i.jmx_endpoint,"
+				"i.history,i.trends,i.inventory_link,i.valuemapid,i.units,ir.`error`,i.jmx_endpoint,"
 				"i.master_itemid,i.timeout,i.url,i.query_fields,i.posts,i.status_codes,"
 				"i.follow_redirects,i.post_type,i.http_proxy,i.headers,i.retrieve_mode,"
 				"i.request_method,i.output_format,i.ssl_cert_file,i.ssl_key_file,i.ssl_key_password,"
@@ -2154,7 +2154,7 @@ int	zbx_dbsync_compare_triggers(zbx_dbsync_t *sync)
 	char			**row;
 
 	if (NULL == (result = DBselect(
-			"select distinct t.triggerid,t.description,t.expression,t.error,t.priority,t.type,t.value,"
+			"select distinct t.triggerid,t.description,t.expression,t.`error`,t.priority,t.type,t.value,"
 				"t.state,t.lastchange,t.status,t.recovery_mode,t.recovery_expression,"
 				"t.correlation_mode,t.correlation_tag,opdata"
 			" from hosts h,items i,functions f,triggers t"

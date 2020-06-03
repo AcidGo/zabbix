@@ -3214,7 +3214,7 @@ int	zbx_sql_add_host_availability(char **sql, size_t *sql_alloc, size_t *sql_off
 			char	*error_esc;
 
 			error_esc = DBdyn_escape_field("hosts", "error", ha->agents[i].error);
-			zbx_snprintf_alloc(sql, sql_alloc, sql_offset, "%c%serror='%s'", delim, field_prefix[i],
+			zbx_snprintf_alloc(sql, sql_alloc, sql_offset, "%c%s`error`='%s'", delim, field_prefix[i],
 					error_esc);
 			zbx_free(error_esc);
 			delim = ',';
