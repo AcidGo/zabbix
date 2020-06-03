@@ -1,3 +1,8 @@
+基于 4.4.8 源码修改，主要是修改 zabbix server 和 mysql web 的源码，目前在作者公司测试环境的 TiDB 3.0 数据库上，稳定运行了一段时间。
+此为实验性尝试，目的是探索 zabbix 将 TiDB 作为 server 后端数据库的可能，并且 zabbix 5.0 + timescaledb(compress) 的方案做对比，尝试寻求海量监控数据的可扩展存储方案。
+注意：请勿用于生产环境。
+-----
+
 Zabbix is free software, released under the GNU General Public License
 (GPL) version 2.
 
